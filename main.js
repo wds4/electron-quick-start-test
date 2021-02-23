@@ -30,9 +30,23 @@ app.on('ready', async () => {
   createWindow()
 
   try {
+    console.log("A");
     const node = await IPFS.create()
+    console.log("B");
+    const stream = node.cat('QmPChd2hVbrJ6bfo3WBcTW4iZnpHm8TEzWkLHmLpXhF68A')
+    let data = ''
+
+    for await (const chunk of stream) {
+      // chunks of data are returned as a Buffer, convert it back to a string
+      data += chunk.toString()
+    }
+    console.log("C");
+    console.log(data);
+    // document.getElementById("foo").innerHTML = data;
+    
     const id = await node.id()
     console.log(id)
+    console.log("Z");
   } catch (err) {
     console.error(err)
   }
