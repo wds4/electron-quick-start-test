@@ -22,7 +22,7 @@
     and Electron <span id="electron-version"></span>.
     <div id="foo" >foo div</div>
     <script>
-    async function asyncCall() {
+    async function asyncCall(IPFS) {
       console.log('calling');
       
       const node = await IPFS.create()
@@ -37,12 +37,12 @@
 
       document.getElementById("foo").innerHTML = data;
       
-      const result = await resolveAfter2Seconds();
-      console.log(result);
+      // const result = await resolveAfter2Seconds();
+      // console.log(result);
       // expected output: "resolved"
     }
 
-    asyncCall();
+    asyncCall(IPFS);
       
 
     </script>
