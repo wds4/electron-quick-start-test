@@ -20,7 +20,20 @@
     We are using Node.js <span id="node-version"></span>,
     Chromium <span id="chrome-version"></span>,
     and Electron <span id="electron-version"></span>.
+    <div id="foo" >foo div</div>
+    <script>
+      const node = await IPFS.create()
 
+      const stream = node.cat('QmPChd2hVbrJ6bfo3WBcTW4iZnpHm8TEzWkLHmLpXhF68A')
+      let data = ''
+
+      for await (const chunk of stream) {
+        // chunks of data are returned as a Buffer, convert it back to a string
+        data += chunk.toString()
+      }
+
+      document.getElementById("foo").innerHTML = data;
+    </script>
     <!-- You can also require other files to run in this process -->
     <script src="./renderer.js"></script>
     
