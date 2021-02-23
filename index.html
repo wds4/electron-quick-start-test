@@ -22,6 +22,9 @@
     and Electron <span id="electron-version"></span>.
     <div id="foo" >foo div</div>
     <script>
+    async function asyncCall() {
+      console.log('calling');
+      
       const node = await IPFS.create()
 
       const stream = node.cat('QmPChd2hVbrJ6bfo3WBcTW4iZnpHm8TEzWkLHmLpXhF68A')
@@ -33,6 +36,15 @@
       }
 
       document.getElementById("foo").innerHTML = data;
+      
+      const result = await resolveAfter2Seconds();
+      console.log(result);
+      // expected output: "resolved"
+    }
+
+    asyncCall();
+      
+
     </script>
     <!-- You can also require other files to run in this process -->
     <script src="./renderer.js"></script>
