@@ -20,6 +20,7 @@
   "devDependencies": {
     "electron": "^11.2.1",
     "electron-rebuild": "^2.3.4",
+    "vis-network": "^9.0.2",
     "ipfs": "^0.54.2",
     "test-ipfs-example": "^3.0.0"
   },
